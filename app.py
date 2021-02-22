@@ -40,7 +40,7 @@ mycollection = mydb["user"] #ชื่อตารางใน Mongo
 def get_user(): #ชื่อ Function
    user = [] #สร้างตัวแปรมาเก็บข้อมูลใน Array
    for f in mycollection.find(): #ใช้ Loop for ในการดึงข้อมูลมาเก็บ
-       user.append({'no' : f['no'], 'name' : f['name']})
+       user.append({'no' : f['no'], 'name' : f['name'], 'position' : f['position'], 'age' : f['age']})
    return jsonify({'result' : user}) #return ข้อมูลมาแสดง
 
 #Create user
