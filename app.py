@@ -5,7 +5,7 @@ import pymongo
 #Init app
 app = Flask(__name__)
 
-myclient = pymongo.MongoClient("mongodb://10.100.2.124:27017")
+myclient = pymongo.MongoClient("mongodb://admin:CDVfxi@10.100.2.124")
 mydb = myclient["MongoDB"]
 mycollection = mydb["user"]
 # admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
@@ -80,7 +80,7 @@ def get():
 
 # Run Server
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=80)
+    app.run(host='0.0.0.0', port=80)
 
 
 
