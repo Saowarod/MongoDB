@@ -5,9 +5,9 @@ import pymongo
 #Init app
 app = Flask(__name__)
 
-myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124")
-mydb = myclient["MongoDB"]
-mycollection = mydb["user"]
+myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124") #เชื่อมต่อ Mongo จาก Ruk-com
+mydb = myclient["MongoDB"] #ชื่อ Database ใน Mongo
+mycollection = mydb["user"] #ชื่อตารางใน Mongo
 # admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
 
 # mydic = {"no":"01","name":"Saowarod Sommo","position":"IT Support","age":"21"}
@@ -35,14 +35,15 @@ mycollection = mydb["user"]
 # mydoc = mycollection.find(myquery)
 # mydoc = mycollection.delete_one(myquery)
 
-
+# Get user
 @app.route('/user', methods=['GET'])
-def get_user():
-   user = []
-   for f in mycollection.find():
+def get_user(): #ชื่อ Function
+   user = [] #สร้างตัวแปรมาเก็บข้อมูลใน Array
+   for f in mycollection.find(): #ใช้ Loop for ในการดึงข้อมูลมาเก็บ
        user.append({'no' : f['no'], 'name' : f['name']})
-   return jsonify({'result' : user})
+   return jsonify({'result' : user}) #return ข้อมูลมาแสดง
 
+#Create user
 @app.route('/user', methods=['POST'])
 def add_user():
    no = request.json['no']
@@ -54,6 +55,7 @@ def add_user():
    output = {'no' : new_user['no'], 'name' : new_user['name'], 'position' : new_user['position'], 'age' : new_user['age']}
    return jsonify({'result' : output})
 
+#delete user
 @app.route('/user', methods=['DELETE'])
 def delete_user():
     number = {'no' : request.args["no"]}
@@ -61,6 +63,7 @@ def delete_user():
     user = mycollection.delete_one(number)
     return jsonify({'result' : "delete"})
 
+#update user
 @app.route('/user', methods=['PUT'])
 def update_user():
    no = request.json['no']
@@ -73,10 +76,10 @@ def update_user():
    return jsonify({'result' : "update"})
 
 
-
+#หน้าแรกให้แสดงข้อความ
 @app.route('/', methods=['GET'])
 def get():
-    return jsonify({'ms': 'Hello'})
+    return jsonify({'ms': '"welcome to MongoDB'})
 
 # Run Server
 if __name__ == "__main__":
