@@ -5,10 +5,10 @@ import pymongo
 #Init app
 app = Flask(__name__)
 
-myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud:11147")
+myclient = pymongo.MongoClient("mongodb://10.100.2.124:27017")
 mydb = myclient["MongoDB"]
 mycollection = mydb["user"]
-
+# admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
 
 # mydic = {"no":"01","name":"Saowarod Sommo","position":"IT Support","age":"21"}
 # x = mycollection.insert_one(mydic)
