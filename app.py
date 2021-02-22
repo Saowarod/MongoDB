@@ -5,7 +5,7 @@ import pymongo
 #Init app
 app = Flask(__name__)
 
-myclient = pymongo.MongoClient("mongodb://admin:CDVfxi@10.100.2.124")
+myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124")
 mydb = myclient["MongoDB"]
 mycollection = mydb["user"]
 # admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
