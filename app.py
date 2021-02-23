@@ -49,7 +49,7 @@ def get_user(): #ชื่อ Function
 def get_time(): #ชื่อ Function
    time = [] #สร้างตัวแปรมาเก็บข้อมูลใน Array
    for t in mycollection.find(): #ใช้ Loop for ในการดึงข้อมูลมาเก็บ
-       user.append({'no' : t['no'], 'id_time' : t['id_time'], 'time' : t['time']})
+       time.append({'no' : t['no'], 'id_time' : t['id_time'], 'time' : t['time']})
    return jsonify({'result' : time}) #return ข้อมูลมาแสดง
 
 #Create user
