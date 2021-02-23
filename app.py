@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124") #เชื่อมต่อ Mongo จาก Ruk-com
 mydb = myclient["MongoDB"] #ชื่อ Database ใน Mongo
-mycollection = mydb["user"] #ชื่อตารางใน Mongo
+mycollection = mydb["user","time"] #ชื่อตารางใน Mongo
 # admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
 
 # mydic = {"no":"01","name":"Saowarod Sommo","position":"IT Support","age":"21"}
@@ -41,6 +41,14 @@ def get_user(): #ชื่อ Function
    user = [] #สร้างตัวแปรมาเก็บข้อมูลใน Array
    for f in mycollection.find(): #ใช้ Loop for ในการดึงข้อมูลมาเก็บ
        user.append({'no' : f['no'], 'name' : f['name'], 'position' : f['position'], 'age' : f['age']})
+   return jsonify({'result' : user}) #return ข้อมูลมาแสดง
+
+# Get time
+@app.route('/time', methods=['GET'])
+def get_time(): #ชื่อ Function
+   time = [] #สร้างตัวแปรมาเก็บข้อมูลใน Array
+   for t in mycollection.find(): #ใช้ Loop for ในการดึงข้อมูลมาเก็บ
+       user.append({'no' : t['no'], 'id_time' : t['id_time'], 'time' : t['time']})
    return jsonify({'result' : user}) #return ข้อมูลมาแสดง
 
 #Create user
