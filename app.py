@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124") #เชื่อมต่อ Mongo จาก Ruk-com
 mydb = myclient["MongoDB"] #ชื่อ Database ใน Mongo
-mycollection = mydb["user","time"] #ชื่อตารางใน Mongo
+mycollection = mydb["user"] #ชื่อตารางใน Mongo
+mycol = mydb["time"]
 # admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
 
 # mydic = {"no":"01","name":"Saowarod Sommo","position":"IT Support","age":"21"}
