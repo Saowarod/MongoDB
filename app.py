@@ -5,7 +5,7 @@ import pymongo
 #Init app
 app = Flask(__name__)
 
-myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124:5432") #เชื่อมต่อ Mongo จาก Ruk-com
+myclient = pymongo.MongoClient("mongodb://admin:CDVfxi72080@10.100.2.124") #เชื่อมต่อ Mongo จาก Ruk-com
 mydb = myclient["MongoDB"] #ชื่อ Database ใน Mongo
 mycollection = mydb["user"] #ชื่อตารางใน Mongo
 # admin:CDVfxi72080@node9147-advweb-09.app.ruk-com.cloud
